@@ -1,0 +1,57 @@
+﻿@model IEnumerable<MVCPage.Models.Cliente>
+
+@{
+    ViewData["Subtitle"] = "Clientes Registrados";
+}
+
+
+<div class="row">
+    <div class="col-6">
+        <h2 class="titulo">@ViewBag.Subtitle</h2>
+    </div>
+
+    <div class="col-6 text-right">
+        <a asp-controller="home" asp-action="AdicionarClientes" class="btn btn-primary"><i class="fas fa-plus fa-angle-left fa-fw"></i> Adicionar</a>
+    </div>
+</div>
+
+
+@if (Model.Count() == 0)
+{
+    <p>Não há clientes registrados ainda.</p>
+}
+else
+{
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nome</th>
+                    <th>Sobrenome</th>
+                    <th>Telefone</th>
+                    <th></th>
+                </tr>
+            </thead>  
+            <tbody>
+                @foreach (var pessoa in Model)
+                {
+                <tr>
+                    <td>@pessoa.Nome</td>
+                    <td>@pessoa.SobreNome</td>
+                    <td>@pessoa.Telefone</td>
+                    <td class="text-right">
+                        <a asp-controller="home" asp-action="EditarClientes" asp-route-id="@pessoa.Id" class="btn btn-primary"><i class="fas fa-pen fa-fw"></i>Editar</a>
+                        <a asp-controller="home" asp-action="RemoverClientes" asp-route-id="@pessoa.Id" class="btn btn-danger"><i class="fas fa-trash fa-fw"></i>Remover</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+
+        <p>Cliente registrados até agora: <b>@Model.Count()</b></p>
+}
+
+<div>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-primary">
+        <i class="fas fa-angle-left fa-fw"></i>Voltar
+    </a>
+</div>

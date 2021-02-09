@@ -1,0 +1,42 @@
+﻿@model MVCPage.Models.Cliente
+
+@{
+    ViewData["Subtitle"] = "Editando Clientes";
+}
+
+<h2 class="titulo">@ViewBag.Subtitle</h2>
+<hr />
+
+<div class="card bg-light p-5">
+    <form asp-controller="Home" asp-action="EditarClientes" method="post">
+        <div class="form-group">
+            @Html.HiddenFor(model => Model.Id);
+            <!-- Precisamos passar a ID dos clientes que estamos modificando, por isso tbm usamos o HiddenFor -->
+
+            <!-- Faz uma label dinamicamente de acordo com a propriedade definida -->
+            @Html.LabelFor(model => Model.Nome)
+            <br />
+            @Html.EditorFor(model => Model.Nome)
+            <!-- Os valores já estarão pré-preenchidos -->
+        </div>
+
+        <div class="form-group">
+            <!-- Faz uma label dinamicamente de acordo com a propriedade definida -->
+            @Html.LabelFor(model => Model.SobreNome)
+            <br />
+            @Html.EditorFor(model => Model.SobreNome)
+            <!-- Os valores já estarão pré-preenchidos -->
+        </div>
+
+        <div class="form-group">
+            <!-- Faz uma label dinamicamente de acordo com a propriedade definida -->
+            @Html.LabelFor(model => Model.Telefone)
+            <br />
+            @Html.EditorFor(model => Model.Telefone)
+            <!-- Os valores já estarão pré-preenchidos -->
+        </div>
+
+        <a asp-controller="Home" asp-action="Index" class="btn btn-danger"><i class="fas fa-times fa-fw"></i>Cancelar</a>
+        <button class="btn btn-success text-white"><i class="fas fa-check fa-fw"></i>Salvar</button>
+    </form>
+</div>

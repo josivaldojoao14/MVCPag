@@ -1,0 +1,42 @@
+﻿@model MVCPage.Models.Cliente
+
+@{
+    ViewData["Subtitle"] = "Adicionar cliente";
+}
+
+<h2 class="titulo">@ViewBag.Subtitle</h2>
+<hr />
+
+<div class="card bg-light p-5">
+    <form asp-controller="Home" asp-action="AdicionarClientes" method="post">
+        <div class="form-group">
+            <!-- Faz uma label dinamicamente de acordo com a propriedade definida -->
+            @Html.LabelFor(model => Model.Nome)
+            <br />
+            @Html.TextBoxFor(model => Model.Nome)
+            <!-- Assume o papel de uma <input> -->
+        </div>
+
+        <div class="form-group ">
+            <!-- Faz uma label dinamicamente de acordo com a propriedade definida -->
+            @Html.LabelFor(model => Model.SobreNome)
+            <br />
+            @Html.TextBoxFor(model => Model.SobreNome)
+            <!-- Assume o papel de uma <input> -->
+        </div>
+
+        <div class="form-group">
+            <!-- Faz uma label dinamicamente de acordo com a propriedade definida -->
+            @Html.LabelFor(model => Model.Telefone)
+            <br />
+            @Html.TextBoxFor(model => Model.Telefone)
+            <!-- Assume o papel de uma <input> -->
+        </div>
+
+        <a asp-controller="Home" asp-action="Index" class="btn btn-danger"><i class="fas fa-times fa-fw"></i>Cancelar</a>
+        <button class="btn btn-success text-white"><i class="fas fa-check fa-fw"></i>Adicionar</button>
+    </form>
+</div>
+
+
+
